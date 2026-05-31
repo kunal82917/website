@@ -204,9 +204,20 @@ export default function Home() {
 
             {/* Web Games Grid */}
             <div className="project-grid" id="web-games" style={{ display: "none" }}>
-              {/* Blank for future web games */}
-              <div className="empty-state">
-                <p>No web games added yet. Working on something exciting!</p>
+              <div className="project-card">
+                <div className="project-content">
+                  <h3>Tic Tac Toe</h3>
+                  <p>A classic Tic Tac Toe game deployed as a web app, featuring a clean UI and interactive play.</p>
+                  <div className="tech-stack">
+                    <span>React</span>
+                    <span>Next.js</span>
+                    <span>CSS</span>
+                  </div>
+                  <div className="project-links">
+                    <a href="https://tic-tac-toe-kunal82917.vercel.app/" target="_blank" rel="noreferrer"
+                      className="btn btn-small btn-primary">Play Now</a>
+                  </div>
+                </div>
               </div>
             </div>
 
