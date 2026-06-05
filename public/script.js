@@ -91,11 +91,9 @@ if (toggleBtns.length > 0 && toggleSlider) {
             // Add active to clicked
             btn.classList.add('active');
 
-            // Move slider
-            const btnWidth = btn.offsetWidth;
+            // Move slider — use translateX of the button's offsetLeft minus the 4px container padding
             const leftPosition = btn.offsetLeft;
-            toggleSlider.style.width = `${btnWidth}px`;
-            toggleSlider.style.transform = `translateX(${leftPosition - 5}px)`; // -5 because of container padding
+            toggleSlider.style.transform = `translateX(${leftPosition - 4}px)`;
 
             // Toggle Grids
             const targetId = btn.getAttribute('data-target');
@@ -109,12 +107,14 @@ if (toggleBtns.length > 0 && toggleSlider) {
         });
     });
 
-    // Initialize slider position
-    window.addEventListener('load', () => {
+    // Initialize slider position on load
+    const initSlider = () => {
         const activeBtn = document.querySelector('.toggle-btn.active');
         if (activeBtn && toggleSlider) {
-            toggleSlider.style.width = `${activeBtn.offsetWidth}px`;
-            toggleSlider.style.transform = `translateX(${activeBtn.offsetLeft - 5}px)`;
+            toggleSlider.style.transform = `translateX(${activeBtn.offsetLeft - 4}px)`;
         }
-    });
+    };
+    window.addEventListener('load', initSlider);
+    // Also run immediately in case load already fired
+    initSlider();
 }
