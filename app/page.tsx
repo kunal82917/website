@@ -456,6 +456,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+                {/* Project 2 */}
                 <div className="project-card">
                   <div className="project-card-top-bar" />
                   <div className="project-content">
@@ -488,33 +489,29 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
-
-            {/* Web Games Grid */}
-            {activeTab === "web-games" && (
-              <div className="project-grid" id="web-games">
+                {/* Project 3 */}
                 <div className="project-card">
                   <div className="project-card-top-bar" />
                   <div className="project-content">
                     <div className="project-meta">
-                      <span className="project-index">01</span>
-                      <span className="project-category">Web Game</span>
+                      <span className="project-index">03</span>
+                      <span className="project-category">Tasky</span>
                     </div>
-                    <h3 className="project-title">Tic Tac Toe</h3>
+                    <h3 className="project-title">Tasky</h3>
                     <p className="project-desc">
-                      A classic Tic Tac Toe game deployed as a web app, featuring a clean UI and smooth interactive play.
+                      Tasky is a to-do list android application. it is highly secure and user can make groups to compete with friends.
                     </p>
                     <div className="tech-stack">
-                      <span>React</span>
-                      <span>Next.js</span>
-                      <span>CSS</span>
+                      <span>Kotlin</span>
+                      <span>Java</span>
+                      <span>Jetpack Compose</span>
+                      <span>SQLite</span>
                     </div>
                     <div className="project-links">
-                      <a href="https://tic-tac-toe-kunal82917.vercel.app/" target="_blank" rel="noreferrer"
-                        className="project-link-btn project-link-solid">
-                        Play Now
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                      <a href="https://github.com/kunal82917/Tasky" target="_blank" rel="noreferrer"
+                        className="project-link-btn project-link-ghost">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" /></svg>
+                        GitHub
                       </a>
                     </div>
                   </div>
@@ -522,245 +519,276 @@ export default function Home() {
               </div>
             )}
 
-          </div>
-        </section>
-        <hr className="section-divider" />
-
-        {/* 5. Career Path / Goals Section */}
-        <section id="career" className="career section">
-          <div className="container">
-
-            {/* Section eyebrow */}
-            <div className="section-eyebrow">
-              <span className="eyebrow-line" />
-              <span className="eyebrow-text">05 — Career Path</span>
+          {/* Web Games Grid */}
+          {activeTab === "web-games" && (
+            <div className="project-grid" id="web-games">
+              <div className="project-card">
+                <div className="project-card-top-bar" />
+                <div className="project-content">
+                  <div className="project-meta">
+                    <span className="project-index">01</span>
+                    <span className="project-category">Web Game</span>
+                  </div>
+                  <h3 className="project-title">Tic Tac Toe</h3>
+                  <p className="project-desc">
+                    A classic Tic Tac Toe game deployed as a web app, featuring a clean UI and smooth interactive play.
+                  </p>
+                  <div className="tech-stack">
+                    <span>React</span>
+                    <span>Next.js</span>
+                    <span>CSS</span>
+                  </div>
+                  <div className="project-links">
+                    <a href="https://tic-tac-toe-kunal82917.vercel.app/" target="_blank" rel="noreferrer"
+                      className="project-link-btn project-link-solid">
+                      Play Now
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
+          )}
 
-            {/* Editorial heading */}
-            <div className="career-header">
-              <h2 className="career-heading">
-                Where I&apos;m<br />
-                <span className="career-heading-gradient">headed.</span>
+        </div>
+      </section>
+      <hr className="section-divider" />
+
+      {/* 5. Career Path / Goals Section */}
+      <section id="career" className="career section">
+        <div className="container">
+
+          {/* Section eyebrow */}
+          <div className="section-eyebrow">
+            <span className="eyebrow-line" />
+            <span className="eyebrow-text">05 — Career Path</span>
+          </div>
+
+          {/* Editorial heading */}
+          <div className="career-header">
+            <h2 className="career-heading">
+              Where I&apos;m<br />
+              <span className="career-heading-gradient">headed.</span>
+            </h2>
+            <p className="career-subtext">
+              Charting a path towards becoming a versatile engineer — one challenge at a time.
+            </p>
+          </div>
+
+          {/* Cards */}
+          <div className="career-content">
+            <div className="career-card">
+              <div className="career-card-icon">🎯</div>
+              <div className="career-card-num">01</div>
+              <h3 className="career-card-title">Current Focus</h3>
+              <p className="career-card-desc">Deeply involved in mastering Data Structures &amp; Algorithms and core programming concepts to build a strong problem-solving foundation.</p>
+            </div>
+            <div className="career-card">
+              <div className="career-card-icon">🚀</div>
+              <div className="career-card-num">02</div>
+              <h3 className="career-card-title">Aspirations</h3>
+              <p className="career-card-desc">My primary goal is to become a strong, versatile software engineer capable of architecting robust, scalable systems.</p>
+            </div>
+            <div className="career-card">
+              <div className="career-card-icon">🔒</div>
+              <div className="career-card-num">03</div>
+              <h3 className="career-card-title">Areas of Interest</h3>
+              <p className="career-card-desc">Particularly drawn towards backend development and cybersecurity — blending both to build secure, high-performance applications.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <hr className="section-divider" />
+
+      {/* 6. Certificates Section */}
+      <section id="certificates" className="certificates section">
+        <div className="container">
+
+          {/* Section eyebrow */}
+          <div className="section-eyebrow">
+            <span className="eyebrow-line" />
+            <span className="eyebrow-text">06 — Certifications</span>
+          </div>
+
+          {/* Editorial heading */}
+          <div className="cert-header">
+            <h2 className="cert-heading">
+              Proof of<br />
+              <span className="cert-heading-gradient">learning.</span>
+            </h2>
+            <p className="cert-subtext">
+              Credentials earned across AI, cloud, security, and software engineering — click any to download.
+            </p>
+          </div>
+
+          <div className="cert-grid">
+
+            <a href="/kunal infosys i2aiml.jpg" download className="cert-card-link">
+              <div className="cert-card">
+                <div className="cert-thumbnail">
+                  <img src="/kunal infosys i2aiml.jpg" alt="Introduction to AIML Certificate" loading="lazy" />
+
+                </div>
+                <div className="cert-info">
+                  <h3>Introduction to AIML</h3>
+                  <p>Infosys</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/kunal udemy ai agents cert.jpg" download className="cert-card-link">
+              <div className="cert-card">
+                <div className="cert-thumbnail">
+                  <img src="/kunal udemy ai agents cert.jpg" alt="AI Agents Certificate" loading="lazy" />
+
+                </div>
+                <div className="cert-info">
+                  <h3>AI Agents</h3>
+                  <p>Udemy</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/kunal udemy google cloud cert.jpg" download className="cert-card-link">
+              <div className="cert-card">
+                <div className="cert-thumbnail">
+                  <img src="/kunal udemy google cloud cert.jpg" alt="Google Cloud Certificate" loading="lazy" />
+
+                </div>
+                <div className="cert-info">
+                  <h3>Google Cloud</h3>
+                  <p>Udemy</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/kunal udemy python basics cert.jpg" download className="cert-card-link">
+              <div className="cert-card">
+                <div className="cert-thumbnail">
+                  <img src="/kunal udemy python basics cert.jpg" alt="Python Basics Certificate" loading="lazy" />
+
+                </div>
+                <div className="cert-info">
+                  <h3>Python Basics</h3>
+                  <p>Udemy</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/kunal udemy java spring boot cert.jpg" download className="cert-card-link">
+              <div className="cert-card">
+                <div className="cert-thumbnail">
+                  <img src="/kunal udemy java spring boot cert.jpg" alt="Java & Spring Boot Certificate" loading="lazy" />
+
+                </div>
+                <div className="cert-info">
+                  <h3>Java & Spring Boot</h3>
+                  <p>Udemy</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/kunal udemy win cmd mastery cert.jpg" download className="cert-card-link">
+              <div className="cert-card">
+                <div className="cert-thumbnail">
+                  <img src="/kunal udemy win cmd mastery cert.jpg" alt="Windows Cmd Mastery Certificate" loading="lazy" />
+                  <div className="cert-overlay">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Download</span>
+                  </div>
+                </div>
+                <div className="cert-info">
+                  <h3>Windows Cmd Mastery</h3>
+                  <p>Udemy</p>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+      <hr className="section-divider" />
+
+      {/* 7. Contact Section */}
+      <section id="contact" className="contact section">
+        <div className="container">
+
+          {/* Section eyebrow */}
+          <div className="section-eyebrow">
+            <span className="eyebrow-line" />
+            <span className="eyebrow-text">07 — Get In Touch</span>
+          </div>
+
+          {/* Editorial CTA block */}
+          <div className="contact-editorial">
+            <div className="contact-left">
+              <h2 className="contact-heading">
+                Let&apos;s work<br />
+                <span className="contact-heading-gradient">together.</span>
               </h2>
-              <p className="career-subtext">
-                Charting a path towards becoming a versatile engineer — one challenge at a time.
+              <p className="contact-subtext">
+                I&apos;m currently open to new opportunities. Whether you have a project, a question,
+                or just want to say hi — my inbox is always open.
               </p>
+              <a href="mailto:kunalgupta9340@gmail.com" className="contact-email-btn">
+                Say Hello
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+              </a>
             </div>
 
-            {/* Cards */}
-            <div className="career-content">
-              <div className="career-card">
-                <div className="career-card-icon">🎯</div>
-                <div className="career-card-num">01</div>
-                <h3 className="career-card-title">Current Focus</h3>
-                <p className="career-card-desc">Deeply involved in mastering Data Structures &amp; Algorithms and core programming concepts to build a strong problem-solving foundation.</p>
-              </div>
-              <div className="career-card">
-                <div className="career-card-icon">🚀</div>
-                <div className="career-card-num">02</div>
-                <h3 className="career-card-title">Aspirations</h3>
-                <p className="career-card-desc">My primary goal is to become a strong, versatile software engineer capable of architecting robust, scalable systems.</p>
-              </div>
-              <div className="career-card">
-                <div className="career-card-icon">🔒</div>
-                <div className="career-card-num">03</div>
-                <h3 className="career-card-title">Areas of Interest</h3>
-                <p className="career-card-desc">Particularly drawn towards backend development and cybersecurity — blending both to build secure, high-performance applications.</p>
-              </div>
-            </div>
-
-          </div>
-        </section>
-        <hr className="section-divider" />
-
-        {/* 6. Certificates Section */}
-        <section id="certificates" className="certificates section">
-          <div className="container">
-
-            {/* Section eyebrow */}
-            <div className="section-eyebrow">
-              <span className="eyebrow-line" />
-              <span className="eyebrow-text">06 — Certifications</span>
-            </div>
-
-            {/* Editorial heading */}
-            <div className="cert-header">
-              <h2 className="cert-heading">
-                Proof of<br />
-                <span className="cert-heading-gradient">learning.</span>
-              </h2>
-              <p className="cert-subtext">
-                Credentials earned across AI, cloud, security, and software engineering — click any to download.
-              </p>
-            </div>
-
-            <div className="cert-grid">
-
-              <a href="/kunal infosys i2aiml.jpg" download className="cert-card-link">
-                <div className="cert-card">
-                  <div className="cert-thumbnail">
-                    <img src="/kunal infosys i2aiml.jpg" alt="Introduction to AIML Certificate" loading="lazy" />
-
+            <div className="contact-right">
+              <div className="contact-links-stack">
+                <a href="mailto:kunalgupta9340@gmail.com" target="_blank" className="contact-row-link" aria-label="Email">
+                  <div className="contact-row-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                   </div>
-                  <div className="cert-info">
-                    <h3>Introduction to AIML</h3>
-                    <p>Infosys</p>
+                  <div className="contact-row-body">
+                    <span className="contact-row-label">Email</span>
+                    <span className="contact-row-value">kunalgupta9340@gmail.com</span>
                   </div>
-                </div>
-              </a>
+                  <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                </a>
 
-              <a href="/kunal udemy ai agents cert.jpg" download className="cert-card-link">
-                <div className="cert-card">
-                  <div className="cert-thumbnail">
-                    <img src="/kunal udemy ai agents cert.jpg" alt="AI Agents Certificate" loading="lazy" />
-
+                <a href="https://www.linkedin.com/in/kunal82917/" target="_blank" rel="noreferrer" className="contact-row-link" aria-label="LinkedIn">
+                  <div className="contact-row-icon">
+                    <i className="devicon-linkedin-plain colored" style={{ fontSize: '20px' }}></i>
                   </div>
-                  <div className="cert-info">
-                    <h3>AI Agents</h3>
-                    <p>Udemy</p>
+                  <div className="contact-row-body">
+                    <span className="contact-row-label">LinkedIn</span>
+                    <span className="contact-row-value">kunal82917</span>
                   </div>
-                </div>
-              </a>
+                  <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                </a>
 
-              <a href="/kunal udemy google cloud cert.jpg" download className="cert-card-link">
-                <div className="cert-card">
-                  <div className="cert-thumbnail">
-                    <img src="/kunal udemy google cloud cert.jpg" alt="Google Cloud Certificate" loading="lazy" />
-
+                <a href="https://github.com/kunal82917" target="_blank" rel="noreferrer" className="contact-row-link" aria-label="GitHub">
+                  <div className="contact-row-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" /></svg>
                   </div>
-                  <div className="cert-info">
-                    <h3>Google Cloud</h3>
-                    <p>Udemy</p>
+                  <div className="contact-row-body">
+                    <span className="contact-row-label">GitHub</span>
+                    <span className="contact-row-value">kunal82917</span>
                   </div>
-                </div>
-              </a>
+                  <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                </a>
 
-              <a href="/kunal udemy python basics cert.jpg" download className="cert-card-link">
-                <div className="cert-card">
-                  <div className="cert-thumbnail">
-                    <img src="/kunal udemy python basics cert.jpg" alt="Python Basics Certificate" loading="lazy" />
-
+                <a href="https://leetcode.com/u/AHDFSOgt2Z/" target="_blank" rel="noreferrer" className="contact-row-link" aria-label="LeetCode">
+                  <div className="contact-row-icon">
+                    <svg viewBox="0 0 24 24" fill="#FFA116" width="20" height="20"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.378 1.378 0 0 0-.207-1.953l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382H10.617z" /></svg>
                   </div>
-                  <div className="cert-info">
-                    <h3>Python Basics</h3>
-                    <p>Udemy</p>
+                  <div className="contact-row-body">
+                    <span className="contact-row-label">LeetCode</span>
+                    <span className="contact-row-value">AHDFSOgt2Z</span>
                   </div>
-                </div>
-              </a>
-
-              <a href="/kunal udemy java spring boot cert.jpg" download className="cert-card-link">
-                <div className="cert-card">
-                  <div className="cert-thumbnail">
-                    <img src="/kunal udemy java spring boot cert.jpg" alt="Java & Spring Boot Certificate" loading="lazy" />
-
-                  </div>
-                  <div className="cert-info">
-                    <h3>Java & Spring Boot</h3>
-                    <p>Udemy</p>
-                  </div>
-                </div>
-              </a>
-
-              <a href="/kunal udemy win cmd mastery cert.jpg" download className="cert-card-link">
-                <div className="cert-card">
-                  <div className="cert-thumbnail">
-                    <img src="/kunal udemy win cmd mastery cert.jpg" alt="Windows Cmd Mastery Certificate" loading="lazy" />
-                    <div className="cert-overlay">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                      <span>Download</span>
-                    </div>
-                  </div>
-                  <div className="cert-info">
-                    <h3>Windows Cmd Mastery</h3>
-                    <p>Udemy</p>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-          </div>
-        </section>
-        <hr className="section-divider" />
-
-        {/* 7. Contact Section */}
-        <section id="contact" className="contact section">
-          <div className="container">
-
-            {/* Section eyebrow */}
-            <div className="section-eyebrow">
-              <span className="eyebrow-line" />
-              <span className="eyebrow-text">07 — Get In Touch</span>
-            </div>
-
-            {/* Editorial CTA block */}
-            <div className="contact-editorial">
-              <div className="contact-left">
-                <h2 className="contact-heading">
-                  Let&apos;s work<br />
-                  <span className="contact-heading-gradient">together.</span>
-                </h2>
-                <p className="contact-subtext">
-                  I&apos;m currently open to new opportunities. Whether you have a project, a question,
-                  or just want to say hi — my inbox is always open.
-                </p>
-                <a href="mailto:kunalgupta9340@gmail.com" className="contact-email-btn">
-                  Say Hello
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                  <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
                 </a>
               </div>
-
-              <div className="contact-right">
-                <div className="contact-links-stack">
-                  <a href="mailto:kunalgupta9340@gmail.com" target="_blank" className="contact-row-link" aria-label="Email">
-                    <div className="contact-row-icon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    </div>
-                    <div className="contact-row-body">
-                      <span className="contact-row-label">Email</span>
-                      <span className="contact-row-value">kunalgupta9340@gmail.com</span>
-                    </div>
-                    <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-                  </a>
-
-                  <a href="https://www.linkedin.com/in/kunal82917/" target="_blank" rel="noreferrer" className="contact-row-link" aria-label="LinkedIn">
-                    <div className="contact-row-icon">
-                      <i className="devicon-linkedin-plain colored" style={{ fontSize: '20px' }}></i>
-                    </div>
-                    <div className="contact-row-body">
-                      <span className="contact-row-label">LinkedIn</span>
-                      <span className="contact-row-value">kunal82917</span>
-                    </div>
-                    <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-                  </a>
-
-                  <a href="https://github.com/kunal82917" target="_blank" rel="noreferrer" className="contact-row-link" aria-label="GitHub">
-                    <div className="contact-row-icon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" /></svg>
-                    </div>
-                    <div className="contact-row-body">
-                      <span className="contact-row-label">GitHub</span>
-                      <span className="contact-row-value">kunal82917</span>
-                    </div>
-                    <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-                  </a>
-
-                  <a href="https://leetcode.com/u/AHDFSOgt2Z/" target="_blank" rel="noreferrer" className="contact-row-link" aria-label="LeetCode">
-                    <div className="contact-row-icon">
-                      <svg viewBox="0 0 24 24" fill="#FFA116" width="20" height="20"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.378 1.378 0 0 0-.207-1.953l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382H10.617z" /></svg>
-                    </div>
-                    <div className="contact-row-body">
-                      <span className="contact-row-label">LeetCode</span>
-                      <span className="contact-row-value">AHDFSOgt2Z</span>
-                    </div>
-                    <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-                  </a>
-                </div>
-              </div>
             </div>
-
           </div>
-        </section>
-      </main>
+
+        </div>
+      </section>
+    </main >
 
 
     </>
