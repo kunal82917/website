@@ -1,38 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
-// ─── GitHub SVG (reused) ────────────────────────────────────────────────────
+// ─── GitHub SVG ──────────────────────────────────────────────────────────────
 const GitHubIcon = ({ size = 20 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
   </svg>
 );
 
-// ─── External link arrow SVG ─────────────────────────────────────────────────
+// ─── External link arrow ──────────────────────────────────────────────────────
 const ArrowIcon = ({ size = 12 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
     <path d="M7 17L17 7M17 7H7M17 7v10" />
   </svg>
 );
 
-// ─── Right arrow SVG ─────────────────────────────────────────────────────────
+// ─── Right arrow ──────────────────────────────────────────────────────────────
 const RightArrow = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
     <path d="M5 12h14M12 5l7 7-7 7" />
   </svg>
 );
 
-// ─── LeetCode SVG ────────────────────────────────────────────────────────────
+// ─── LeetCode SVG ─────────────────────────────────────────────────────────────
 const LeetCodeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="#FFA116" width="20" height="20">
+  <svg viewBox="0 0 24 24" fill="#FFA116" width="20" height="20" aria-hidden="true">
     <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.378 1.378 0 0 0-.207-1.953l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382H10.617z" />
   </svg>
 );
 
-// ─── Email SVG ───────────────────────────────────────────────────────────────
+// ─── Email SVG ────────────────────────────────────────────────────────────────
 const EmailIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
     <polyline points="22,6 12,13 2,6" />
   </svg>
@@ -40,14 +40,14 @@ const EmailIcon = () => (
 
 // ─── LinkedIn SVG ─────────────────────────────────────────────────────────────
 const LinkedInIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
   </svg>
 );
 
-// ─── Resume SVG ──────────────────────────────────────────────────────────────
+// ─── Resume SVG ───────────────────────────────────────────────────────────────
 const ResumeIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
     <polyline points="14 2 14 8 20 8" />
     <line x1="16" y1="13" x2="8" y2="13" />
@@ -58,23 +58,37 @@ const ResumeIcon = () => (
 
 // ─── Download SVG ─────────────────────────────────────────────────────────────
 const DownloadIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
     <polyline points="7 10 12 15 17 10" />
     <line x1="12" y1="15" x2="12" y2="3" />
   </svg>
 );
 
+// ─── Copy SVG ─────────────────────────────────────────────────────────────────
+const CopyIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+  </svg>
+);
+
+// ─── Check SVG ────────────────────────────────────────────────────────────────
+const CheckIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"web-apps" | "android" | "web-games">("web-apps");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   // ── Custom cursor ──────────────────────────────────────────────────────────
   useEffect(() => {
-    // Only run on fine-pointer devices (desktop)
     if (!window.matchMedia("(pointer: fine)").matches) return;
-    // Respect reduced motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const cursorDot = document.querySelector(".cursor-dot") as HTMLElement;
@@ -87,7 +101,6 @@ export default function Home() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      // Use transform for dot — avoids layout thrashing
       cursorDot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
     };
 
@@ -123,7 +136,26 @@ export default function Home() {
     };
   }, []);
 
-  // ── Escape key closes mobile menu ─────────────────────────────────────────
+  // ── Active section tracking ────────────────────────────────────────────────
+  useEffect(() => {
+    const sections = ["hero", "about", "skills", "projects", "career", "certificates", "contact"];
+    const observers: IntersectionObserver[] = [];
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  // ── Escape closes mobile menu ──────────────────────────────────────────────
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && mobileMenuOpen) setMobileMenuOpen(false);
@@ -134,22 +166,45 @@ export default function Home() {
 
   const closeMenu = () => setMobileMenuOpen(false);
 
+  // ── Copy email ────────────────────────────────────────────────────────────
+  const copyEmail = useCallback(() => {
+    navigator.clipboard.writeText("kunalgupta9340@gmail.com").then(() => {
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2000);
+    });
+  }, []);
+
+  const navLinks = [
+    { href: "#about", label: "About", id: "about" },
+    { href: "#skills", label: "Skills", id: "skills" },
+    { href: "#projects", label: "Projects", id: "projects" },
+    { href: "#career", label: "Journey", id: "career" },
+    { href: "#certificates", label: "Certs", id: "certificates" },
+    { href: "#contact", label: "Contact", id: "contact" },
+  ];
+
   return (
     <>
-      {/* Custom Cursor — desktop only, hidden via CSS on touch */}
+      {/* Custom Cursor */}
       <div className="cursor-dot" aria-hidden="true" />
       <div className="cursor-outline" aria-hidden="true" />
 
-      {/* ── Navigation Bar ─────────────────────────────────────────────────── */}
+      {/* ── Navigation ──────────────────────────────────────────────────────── */}
       <nav className="navbar" role="navigation" aria-label="Main navigation">
         <div className="nav-content">
           <ul className={`nav-links ${mobileMenuOpen ? "active" : ""}`} role="list">
-            <li><a href="#about"       onClick={closeMenu}>About</a></li>
-            <li><a href="#skills"      onClick={closeMenu}>Skills</a></li>
-            <li><a href="#projects"    onClick={closeMenu}>Projects</a></li>
-            <li><a href="#career"      onClick={closeMenu}>Journey</a></li>
-            <li><a href="#certificates" onClick={closeMenu}>Certs</a></li>
-            <li><a href="#contact"     onClick={closeMenu}>Contact</a></li>
+            {navLinks.map(({ href, label, id }) => (
+              <li key={id}>
+                <a
+                  href={href}
+                  onClick={closeMenu}
+                  className={activeSection === id ? "nav-link-active" : ""}
+                  aria-current={activeSection === id ? "true" : undefined}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
             <li>
               <a
                 href="/resume.pdf"
@@ -179,91 +234,135 @@ export default function Home() {
       </nav>
 
       <main>
-        {/* ── 01 · Hero ─────────────────────────────────────────────────────── */}
+        {/* ── 01 · Hero ──────────────────────────────────────────────────────── */}
         <section id="hero" className="hero" aria-label="Introduction">
           <div className="hero-wrap">
 
-            {/* Name */}
-            <h1 className="hero-heading">
-              <span className="hero-name-solid">KUNAL</span>
-              <span className="hero-name-outline" aria-hidden="true">GUPTA</span>
-            </h1>
+            {/* Left: Identity */}
+            <div className="hero-left">
+              <div className="hero-status-pill" aria-label="Current status">
+                <span className="hero-status-dot" aria-hidden="true" />
+                <span>Open to internships · 2025–2026</span>
+              </div>
 
-            {/* Role divider */}
-            <div className="hero-rule-row" aria-hidden="true">
-              <span className="hero-rule-line" />
-              <span className="hero-rule-label">Software Engineer · Computer Science</span>
-              <span className="hero-rule-line" />
-            </div>
+              <h1 className="hero-heading">
+                <span className="hero-name-solid">KUNAL</span>
+                <span className="hero-name-outline" aria-hidden="true">GUPTA</span>
+              </h1>
 
-            {/* Focused marquee — fewer, cleaner items */}
-            <div className="hero-marquee" aria-hidden="true">
-              <div className="hero-marquee-inner">
-                <span className="marquee-item">Backend Development</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Full-Stack</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Application Security</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Data Structures &amp; Algorithms</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Android Development</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Problem Solving</span>
-                <span className="marquee-dot">◆</span>
-                {/* Duplicate for seamless loop */}
-                <span className="marquee-item">Backend Development</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Full-Stack</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Application Security</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Data Structures &amp; Algorithms</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Android Development</span>
-                <span className="marquee-dot">◆</span>
-                <span className="marquee-item">Problem Solving</span>
-                <span className="marquee-dot">◆</span>
+              <div className="hero-identity-row" aria-hidden="true">
+                <span className="hero-rule-line" />
+                <span className="hero-role-label">Computer Science Student</span>
+                <span className="hero-rule-line" />
+              </div>
+
+              <p className="hero-tagline">
+                Building backend systems, full-stack applications<br />
+                &amp; security-focused software.
+              </p>
+
+              <p className="hero-bio">
+                CS engineering student at B.Tech, currently focused on backend development,
+                application security, and data structures. I enjoy building software that
+                solves real problems and writing code that&apos;s clean enough to maintain.
+              </p>
+
+              <div className="hero-cta-group">
+                <a href="#projects" className="hero-btn-primary" id="hero-view-projects">
+                  View Projects <RightArrow />
+                </a>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-btn-secondary"
+                  aria-label="View Resume PDF (opens in new tab)"
+                  id="hero-resume"
+                >
+                  <ResumeIcon /> Resume
+                </a>
+              </div>
+
+              <div className="hero-social-row" aria-label="Social links">
+                <a href="https://github.com/kunal82917" target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="GitHub profile">
+                  <GitHubIcon size={18} />
+                </a>
+                <a href="https://www.linkedin.com/in/kunal82917/" target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="LinkedIn profile">
+                  <LinkedInIcon />
+                </a>
+                <a href="https://leetcode.com/u/AHDFSOgt2Z/" target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="LeetCode profile">
+                  <LeetCodeIcon />
+                </a>
+                <a href="mailto:kunalgupta9340@gmail.com" className="hero-social-link" aria-label="Send email">
+                  <EmailIcon />
+                </a>
               </div>
             </div>
 
-            {/* Stats row */}
-            <div className="hero-stats-row">
-              <div className="hero-stat">
-                <span className="hero-stat-num">3+</span>
-                <span className="hero-stat-lbl">Years Coding</span>
-              </div>
-              <div className="hero-stat">
-                <span className="hero-stat-num">10+</span>
-                <span className="hero-stat-lbl">Projects Built</span>
-              </div>
-              <div className="hero-stat">
-                <span className="hero-stat-num">6+</span>
-                <span className="hero-stat-lbl">Certifications</span>
+            {/* Right: Terminal panel */}
+            <div className="hero-right" aria-hidden="true">
+              <div className="hero-terminal">
+                <div className="terminal-titlebar">
+                  <span className="terminal-dot terminal-dot-red" />
+                  <span className="terminal-dot terminal-dot-yellow" />
+                  <span className="terminal-dot terminal-dot-green" />
+                  <span className="terminal-title">kunal@portfolio ~ </span>
+                </div>
+                <div className="terminal-body">
+                  <div className="terminal-line">
+                    <span className="terminal-prompt">$</span>
+                    <span className="terminal-cmd"> whoami</span>
+                  </div>
+                  <div className="terminal-output">kunal · cs student · developer</div>
+
+                  <div className="terminal-line">
+                    <span className="terminal-prompt">$</span>
+                    <span className="terminal-cmd"> cat focus.txt</span>
+                  </div>
+                  <div className="terminal-output terminal-output-block">
+                    <span>backend  <span className="terminal-accent">→</span> REST APIs, auth, data modeling</span>
+                    <span>security <span className="terminal-accent">→</span> JWT, input validation, secure design</span>
+                    <span>dsa      <span className="terminal-accent">→</span> solving problems daily on LeetCode</span>
+                  </div>
+
+                  <div className="terminal-line">
+                    <span className="terminal-prompt">$</span>
+                    <span className="terminal-cmd"> git log --oneline --recent</span>
+                  </div>
+                  <div className="terminal-output terminal-output-block">
+                    <span><span className="terminal-hash">a3f21c</span> feat: HazardWatch v2 backend</span>
+                    <span><span className="terminal-hash">b7e09d</span> feat: Tasky group competition</span>
+                    <span><span className="terminal-hash">c4d88a</span> feat: portfolio redesign</span>
+                  </div>
+
+                  <div className="terminal-line">
+                    <span className="terminal-prompt">$</span>
+                    <span className="terminal-cmd"> echo $GOAL</span>
+                  </div>
+                  <div className="terminal-output">backend internship · 2025–2026</div>
+
+                  <div className="terminal-line terminal-line-cursor">
+                    <span className="terminal-prompt">$</span>
+                    <span className="terminal-cursor-blink" />
+                  </div>
+                </div>
               </div>
 
-              {/* Bio + CTA */}
-              <div className="hero-stat hero-stat-bio">
-                <span className="hero-stat-lbl">
-                  CS engineering student building secure, scalable applications.
-                  Focused on backend systems, full-stack development, and clean engineering.
-                </span>
-                <div className="hero-cta-group">
-                  <a href="#projects" className="hero-btn-primary">
-                    View Projects <RightArrow />
-                  </a>
-                  <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-btn-secondary"
-                    aria-label="Download Resume (opens PDF)"
-                  >
-                    <ResumeIcon /> Resume
-                  </a>
-                  <a href="#contact" className="hero-btn-ghost">
-                    Contact
-                  </a>
+              {/* Focus strip below terminal */}
+              <div className="hero-focus-strip">
+                <div className="focus-item">
+                  <span className="focus-label">BUILDING</span>
+                  <span className="focus-value">HazardWatch</span>
+                </div>
+                <div className="focus-divider" />
+                <div className="focus-item">
+                  <span className="focus-label">LEARNING</span>
+                  <span className="focus-value">DSA + System Design</span>
+                </div>
+                <div className="focus-divider" />
+                <div className="focus-item">
+                  <span className="focus-label">EXPLORING</span>
+                  <span className="focus-value">App Security</span>
                 </div>
               </div>
             </div>
@@ -272,7 +371,109 @@ export default function Home() {
         </section>
         <hr className="section-divider" aria-hidden="true" />
 
-        {/* ── 02 · About & Journey ───────────────────────────────────────────── */}
+        {/* ── Currently Building ─────────────────────────────────────────────── */}
+        <section id="building" className="building-section section" aria-labelledby="building-heading">
+          <div className="container">
+
+            <div className="section-eyebrow" aria-hidden="true">
+              <span className="eyebrow-line" />
+              <span className="eyebrow-text">Currently Building</span>
+            </div>
+
+            <div className="building-grid">
+              <div className="building-left">
+                <div className="building-status-row">
+                  <span className="building-badge">
+                    <span className="building-badge-dot" aria-hidden="true" />
+                    In Progress
+                  </span>
+                  <span className="building-category">Web App · Backend</span>
+                </div>
+
+                <h2 id="building-heading" className="building-title">HazardWatch</h2>
+
+                <p className="building-problem">
+                  <strong>The Problem:</strong> Disaster and hazard events are often underreported or
+                  poorly communicated to communities. People need a platform to report local hazards,
+                  stay aware of nearby risks, and access safety-relevant information.
+                </p>
+                <p className="building-solution">
+                  <strong>The Solution:</strong> A web platform where users can register, authenticate,
+                  and submit hazard reports tied to specific locations. Backed by a MongoDB database with
+                  JWT-based session management — so only authenticated users can post reports, protecting
+                  data integrity.
+                </p>
+
+                <div className="building-tech-row" aria-label="Technologies used">
+                  {["MongoDB", "JWT", "JavaScript", "HTML", "CSS", "Node.js"].map(t => (
+                    <span key={t} className="building-tech-tag">{t}</span>
+                  ))}
+                </div>
+
+                <div className="building-links">
+                  <a
+                    href="https://github.com/kunal82917/HazardWatch"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="building-link-ghost"
+                    aria-label="View HazardWatch source on GitHub"
+                  >
+                    <GitHubIcon size={14} /> GitHub
+                  </a>
+                  <a
+                    href="https://hazardwatch.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="building-link-solid"
+                    aria-label="View HazardWatch live demo"
+                  >
+                    Live Demo <ArrowIcon />
+                  </a>
+                </div>
+              </div>
+
+              <div className="building-right">
+                <div className="building-arch-panel" aria-label="Architecture overview">
+                  <div className="arch-title">Architecture</div>
+                  <div className="arch-flow">
+                    <div className="arch-node arch-node-top">Browser Client</div>
+                    <div className="arch-arrow">↓</div>
+                    <div className="arch-node">HTTP Request</div>
+                    <div className="arch-arrow">↓</div>
+                    <div className="arch-node arch-node-accent">JWT Middleware</div>
+                    <div className="arch-arrow">↓</div>
+                    <div className="arch-node">API Routes</div>
+                    <div className="arch-arrow">↓</div>
+                    <div className="arch-node arch-node-db">MongoDB</div>
+                  </div>
+                </div>
+
+                <div className="building-features-list">
+                  <div className="building-feat">
+                    <span className="building-feat-dot" aria-hidden="true" />
+                    JWT authentication &amp; session management
+                  </div>
+                  <div className="building-feat">
+                    <span className="building-feat-dot" aria-hidden="true" />
+                    MongoDB-backed hazard report storage
+                  </div>
+                  <div className="building-feat">
+                    <span className="building-feat-dot" aria-hidden="true" />
+                    User registration &amp; login flows
+                  </div>
+                  <div className="building-feat">
+                    <span className="building-feat-dot" aria-hidden="true" />
+                    Responsive multi-page interface
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <hr className="section-divider" aria-hidden="true" />
+
+        {/* ── 02 · About ─────────────────────────────────────────────────────── */}
         <section id="about" className="about-section section" aria-labelledby="about-heading">
           <div className="container">
 
@@ -287,28 +488,33 @@ export default function Home() {
               <div className="about-left">
                 <h2 id="about-heading" className="about-heading">
                   Building things<br />
-                  <span className="about-heading-outline">beyond the UI.</span>
+                  <span className="about-heading-gradient">beyond the UI.</span>
                 </h2>
 
                 <p className="about-intro">
-                  I&apos;m Kunal, a Computer Science engineering student focused on backend
-                  development, application security, and problem solving. I enjoy working
-                  on the parts of software that aren&apos;t immediately visible — APIs,
-                  databases, authentication flows, data modeling, and system design.
+                  I&apos;m Kunal — a CS engineering student who gets genuinely excited about
+                  the parts of software that most people don&apos;t see. APIs that behave predictably,
+                  databases that don&apos;t leak data, authentication that doesn&apos;t break under edge cases.
                 </p>
                 <p className="about-body">
-                  I build full-stack web applications and Android apps, write clean and
-                  maintainable code, and approach every project with an engineering mindset.
-                  Currently deepening my understanding of data structures, algorithms, and
-                  secure backend architecture.
+                  Right now I&apos;m in my B.Tech Computer Science program, building real projects on
+                  the side to bridge the gap between classroom theory and actual engineering.
+                  I write backend code, full-stack web apps, and Android apps — and I&apos;m actively
+                  working through DSA problems to sharpen algorithmic thinking.
+                </p>
+                <p className="about-body">
+                  I care about writing code that&apos;s readable, maintainable, and honest about what
+                  it does. I&apos;m looking for an internship where I can contribute to a real codebase,
+                  learn from experienced engineers, and keep growing fast.
                 </p>
 
                 <div className="about-traits" aria-label="Key traits">
                   <span className="trait-tag">Backend-First</span>
                   <span className="trait-tag">Security-Minded</span>
-                  <span className="trait-tag">DSA &amp; Problem Solving</span>
+                  <span className="trait-tag">DSA Practice</span>
                   <span className="trait-tag">Clean Code</span>
                   <span className="trait-tag">Full-Stack</span>
+                  <span className="trait-tag">Always Learning</span>
                 </div>
               </div>
 
@@ -335,12 +541,12 @@ export default function Home() {
                     <div className="tl-dot" aria-hidden="true" />
                     <div className="tl-body">
                       <div className="tl-top">
-                        <h4 className="tl-title">Technical Focus Areas</h4>
-                        <span className="tl-date">Ongoing</span>
+                        <h4 className="tl-title">Technical Focus</h4>
+                        <span className="tl-date">2024 — Ongoing</span>
                       </div>
                       <p className="tl-desc">
-                        Backend development (REST APIs, auth), full-stack web apps,
-                        Android development, application security, and competitive DSA.
+                        Building full-stack web apps with secure backends, developing an Android
+                        app (Tasky) with Jetpack Compose, and studying application security patterns.
                       </p>
                     </div>
                   </div>
@@ -353,8 +559,8 @@ export default function Home() {
                         <span className="tl-date">Now</span>
                       </div>
                       <p className="tl-desc">
-                        System design, cloud fundamentals, advanced DSA, and
-                        secure API design patterns.
+                        System design fundamentals, advanced DSA on LeetCode,
+                        cloud deployment basics, and secure API design patterns.
                       </p>
                     </div>
                   </div>
@@ -367,7 +573,7 @@ export default function Home() {
         </section>
         <hr className="section-divider" aria-hidden="true" />
 
-        {/* ── 03 · Skills ───────────────────────────────────────────────────── */}
+        {/* ── 03 · Skills ────────────────────────────────────────────────────── */}
         <section id="skills" className="skills section" aria-labelledby="skills-heading">
           <div className="container">
 
@@ -382,14 +588,14 @@ export default function Home() {
                 <span className="skills-heading-gradient">with.</span>
               </h2>
               <p className="skills-subtext">
-                Languages, frameworks, and tools I&apos;ve applied across real projects —
-                linked to what I&apos;ve actually built with them.
+                Languages, frameworks, and tools I&apos;ve applied in real projects —
+                each linked to something I&apos;ve actually built with it.
               </p>
             </div>
 
             <div className="skills-bento">
 
-              {/* Programming Languages — wide */}
+              {/* Programming Languages */}
               <div className="skill-bento-card skill-bento-wide">
                 <div className="skill-bento-eyebrow">
                   <span className="skill-bento-num">01</span>
@@ -402,7 +608,7 @@ export default function Home() {
                   <span className="skill-tag"><i className="devicon-kotlin-plain colored" aria-hidden="true" />Kotlin</span>
                   <span className="skill-tag"><i className="devicon-c-plain colored" aria-hidden="true" />C</span>
                 </div>
-                <p className="skill-bento-note">Java &amp; Kotlin → Tasky (Android) · JS → HazardWatch, Portfolio · Python → Scripting</p>
+                <p className="skill-bento-note">Java &amp; Kotlin → Tasky (Android) · JS → HazardWatch, Portfolio · Python → scripting &amp; coursework · C → systems coursework</p>
               </div>
 
               {/* Web Development */}
@@ -417,27 +623,42 @@ export default function Home() {
                   <span className="skill-tag"><i className="devicon-html5-plain colored" aria-hidden="true" />HTML</span>
                   <span className="skill-tag"><i className="devicon-css3-plain colored" aria-hidden="true" />CSS</span>
                 </div>
-                <p className="skill-bento-note">React/Next.js → Portfolio, Tic-Tac-Toe</p>
+                <p className="skill-bento-note">React/Next.js → this portfolio, Tic-Tac-Toe · HTML/CSS → HazardWatch frontend</p>
               </div>
 
-              {/* Databases */}
+              {/* Backend & Data */}
               <div className="skill-bento-card">
                 <div className="skill-bento-eyebrow">
                   <span className="skill-bento-num">03</span>
-                  <span className="skill-bento-label">Databases</span>
+                  <span className="skill-bento-label">Backend &amp; Data</span>
                 </div>
                 <div className="skill-tags">
                   <span className="skill-tag"><i className="devicon-mongodb-plain colored" aria-hidden="true" />MongoDB</span>
                   <span className="skill-tag"><i className="devicon-postgresql-plain colored" aria-hidden="true" />PostgreSQL</span>
                   <span className="skill-tag skill-tag-plain">SQLite</span>
+                  <span className="skill-tag skill-tag-plain">JWT</span>
+                  <span className="skill-tag skill-tag-plain">REST APIs</span>
                 </div>
-                <p className="skill-bento-note">MongoDB → HazardWatch · SQLite → Tasky</p>
+                <p className="skill-bento-note">MongoDB &amp; JWT → HazardWatch · SQLite → Tasky local storage</p>
+              </div>
+
+              {/* Android */}
+              <div className="skill-bento-card">
+                <div className="skill-bento-eyebrow">
+                  <span className="skill-bento-num">04</span>
+                  <span className="skill-bento-label">Android</span>
+                </div>
+                <div className="skill-tags">
+                  <span className="skill-tag skill-tag-plain">Jetpack Compose</span>
+                  <span className="skill-tag skill-tag-plain">Android SDK</span>
+                </div>
+                <p className="skill-bento-note">Used in Tasky — declarative UI with Compose, SQLite persistence</p>
               </div>
 
               {/* Tools & Platforms */}
               <div className="skill-bento-card">
                 <div className="skill-bento-eyebrow">
-                  <span className="skill-bento-num">04</span>
+                  <span className="skill-bento-num">05</span>
                   <span className="skill-bento-label">Tools &amp; Platforms</span>
                 </div>
                 <div className="skill-tags">
@@ -445,33 +666,22 @@ export default function Home() {
                   <span className="skill-tag"><i className="devicon-github-original" aria-hidden="true" />GitHub</span>
                   <span className="skill-tag"><i className="devicon-vercel-original" aria-hidden="true" />Vercel</span>
                   <span className="skill-tag"><i className="devicon-supabase-plain colored" aria-hidden="true" />Supabase</span>
-                  <span className="skill-tag skill-tag-plain">JWT</span>
                 </div>
               </div>
 
-              {/* Android */}
-              <div className="skill-bento-card">
+              {/* Currently Learning */}
+              <div className="skill-bento-card skill-bento-learning">
                 <div className="skill-bento-eyebrow">
-                  <span className="skill-bento-num">05</span>
-                  <span className="skill-bento-label">Android</span>
+                  <span className="skill-bento-num skill-bento-num-learning">→</span>
+                  <span className="skill-bento-label">Currently Learning</span>
                 </div>
                 <div className="skill-tags">
-                  <span className="skill-tag skill-tag-plain">Jetpack Compose</span>
-                  <span className="skill-tag skill-tag-plain">Android SDK</span>
+                  <span className="skill-tag skill-tag-learning">DSA</span>
+                  <span className="skill-tag skill-tag-learning">System Design</span>
+                  <span className="skill-tag skill-tag-learning">App Security</span>
+                  <span className="skill-tag skill-tag-learning">Cloud Basics</span>
                 </div>
-                <p className="skill-bento-note">Used in Tasky</p>
-              </div>
-
-              {/* Other Tools */}
-              <div className="skill-bento-card skill-bento-other">
-                <div className="skill-bento-eyebrow">
-                  <span className="skill-bento-num">06</span>
-                  <span className="skill-bento-label">Other Tools</span>
-                </div>
-                <div className="skill-tags">
-                  <span className="skill-tag skill-tag-plain">🎬 DaVinci Resolve</span>
-                  <span className="skill-tag"><i className="devicon-blender-original colored" aria-hidden="true" />Blender</span>
-                </div>
+                <p className="skill-bento-note">Active LeetCode practice · studying scalable backend architecture · learning secure API design</p>
               </div>
 
             </div>
@@ -479,7 +689,7 @@ export default function Home() {
         </section>
         <hr className="section-divider" aria-hidden="true" />
 
-        {/* ── 04 · Projects ─────────────────────────────────────────────────── */}
+        {/* ── 04 · Projects ──────────────────────────────────────────────────── */}
         <section id="projects" className="projects section" aria-labelledby="projects-heading">
           <div className="container">
 
@@ -496,10 +706,9 @@ export default function Home() {
               <div className="projects-header-right">
                 <p className="projects-subtext">
                   A selection of projects spanning web apps, Android, and browser games —
-                  each demonstrating a different engineering challenge.
+                  each built to solve a concrete problem or explore a new technology.
                 </p>
 
-                {/* Category toggle */}
                 <div
                   className={`project-toggle active-${activeTab}`}
                   role="tablist"
@@ -549,31 +758,42 @@ export default function Home() {
                 aria-labelledby="tab-web-apps"
               >
 
-                {/* Project 01 — HazardWatch */}
-                <article className="project-card">
+                {/* Featured: HazardWatch */}
+                <article className="project-card project-card-featured">
                   <div className="project-card-top-bar" aria-hidden="true" />
                   <div className="project-content">
                     <div className="project-meta">
                       <span className="project-index">01</span>
                       <span className="project-category">Web App</span>
+                      <span className="project-featured-badge">Flagship</span>
                     </div>
                     <h3 className="project-title">HazardWatch</h3>
+                    <p className="project-problem">
+                      <strong>Problem:</strong> Communities lack a simple way to report and track local
+                      hazards — fire risks, road damage, flooding — in real time.
+                    </p>
                     <p className="project-desc">
-                      A disaster prevention and hazard awareness web platform.
-                      Implements JWT-based user authentication and a MongoDB backend
-                      to store and serve hazard-related data.
+                      A disaster-reporting web platform where authenticated users can submit hazard
+                      reports stored in MongoDB. JWT-based auth ensures that only registered users can
+                      post — preventing spam and protecting data integrity.
                     </p>
                     <ul className="project-highlights" aria-label="Technical highlights">
-                      <li>JWT authentication &amp; session management</li>
-                      <li>MongoDB database integration</li>
-                      <li>Responsive multi-page layout</li>
+                      <li>JWT authentication with session management</li>
+                      <li>MongoDB database for hazard report storage</li>
+                      <li>User registration, login &amp; protected routes</li>
+                      <li>Responsive multi-page interface</li>
                     </ul>
+                    <div className="project-learned">
+                      <span className="project-learned-label">What I learned:</span>
+                      implementing token-based auth flows, designing a MongoDB schema for location-linked data,
+                      and thinking about API security from the start.
+                    </div>
                     <div className="tech-stack" aria-label="Technologies used">
                       <span>MongoDB</span>
                       <span>JWT</span>
+                      <span>JavaScript</span>
                       <span>HTML</span>
                       <span>CSS</span>
-                      <span>JavaScript</span>
                     </div>
                     <div className="project-links">
                       <a
@@ -598,7 +818,7 @@ export default function Home() {
                   </div>
                 </article>
 
-                {/* Project 02 — Portfolio */}
+                {/* Portfolio */}
                 <article className="project-card">
                   <div className="project-card-top-bar" aria-hidden="true" />
                   <div className="project-content">
@@ -608,16 +828,22 @@ export default function Home() {
                     </div>
                     <h3 className="project-title">Personal Portfolio</h3>
                     <p className="project-desc">
-                      This portfolio site — a single-page Next.js application built
-                      from scratch with a custom design system, CSS-only animations,
-                      a custom cursor, and full mobile responsiveness.
+                      This site — built from scratch with Next.js 15 App Router, a custom CSS design
+                      system, CSS-only animations, and a requestAnimationFrame cursor. No animation
+                      libraries; everything is hand-written.
                     </p>
                     <ul className="project-highlights" aria-label="Technical highlights">
-                      <li>Next.js 15 App Router architecture</li>
-                      <li>CSS-only marquee animation (no JS)</li>
-                      <li>Custom cursor with requestAnimationFrame</li>
-                      <li>Accessible mobile navigation</li>
+                      <li>Next.js 15 App Router with TypeScript</li>
+                      <li>CSS-only marquee (no JS animation library)</li>
+                      <li>Custom cursor with rAF-based easing</li>
+                      <li>IntersectionObserver for active nav state</li>
+                      <li>Full reduced-motion &amp; accessibility support</li>
                     </ul>
+                    <div className="project-learned">
+                      <span className="project-learned-label">What I learned:</span>
+                      CSS performance (will-change, rAF), semantic HTML at scale, building a design system
+                      from scratch.
+                    </div>
                     <div className="tech-stack" aria-label="Technologies used">
                       <span>Next.js</span>
                       <span>React</span>
@@ -659,8 +885,7 @@ export default function Home() {
                 aria-labelledby="tab-android"
               >
 
-                {/* Project 01 — Tasky */}
-                <article className="project-card">
+                <article className="project-card project-card-featured">
                   <div className="project-card-top-bar" aria-hidden="true" />
                   <div className="project-content">
                     <div className="project-meta">
@@ -668,17 +893,26 @@ export default function Home() {
                       <span className="project-category">Android App</span>
                     </div>
                     <h3 className="project-title">Tasky</h3>
+                    <p className="project-problem">
+                      <strong>Problem:</strong> Task management apps are either too complex or too solo.
+                      Tasky makes productivity social by adding group-based competition.
+                    </p>
                     <p className="project-desc">
-                      A collaborative task management Android application with
-                      group-based competitive features. Users can create tasks,
-                      form groups, and compete with friends on completion streaks.
+                      A collaborative Android task manager where users can create groups, assign tasks,
+                      and compete on completion streaks. Built entirely in Kotlin with Jetpack Compose
+                      and SQLite for offline-first data persistence.
                     </p>
                     <ul className="project-highlights" aria-label="Technical highlights">
-                      <li>Jetpack Compose declarative UI</li>
-                      <li>SQLite local data persistence</li>
-                      <li>Group creation and task competition</li>
-                      <li>Built in Kotlin with Java interop</li>
+                      <li>Declarative Jetpack Compose UI</li>
+                      <li>SQLite for local offline data persistence</li>
+                      <li>Group creation &amp; competitive task completion</li>
+                      <li>Kotlin–Java interop patterns</li>
                     </ul>
+                    <div className="project-learned">
+                      <span className="project-learned-label">What I learned:</span>
+                      composable UI design, SQLite schema design for relational data, and Android
+                      application lifecycle management.
+                    </div>
                     <div className="tech-stack" aria-label="Technologies used">
                       <span>Kotlin</span>
                       <span>Java</span>
@@ -712,7 +946,6 @@ export default function Home() {
                 aria-labelledby="tab-web-games"
               >
 
-                {/* Tic Tac Toe */}
                 <article className="project-card">
                   <div className="project-card-top-bar" aria-hidden="true" />
                   <div className="project-content">
@@ -722,15 +955,20 @@ export default function Home() {
                     </div>
                     <h3 className="project-title">Tic Tac Toe</h3>
                     <p className="project-desc">
-                      A fully playable browser-based Tic Tac Toe game with a clean UI,
-                      win detection, draw state, and instant reset. Built and deployed
-                      with React and Next.js.
+                      A fully playable browser-based Tic Tac Toe game with win detection,
+                      draw state, and instant reset. Built to practice React state management
+                      and component design before moving to more complex apps.
                     </p>
                     <ul className="project-highlights" aria-label="Technical highlights">
-                      <li>React state management for game logic</li>
-                      <li>Win/draw detection algorithm</li>
-                      <li>Deployed on Vercel</li>
+                      <li>React state machine for game logic</li>
+                      <li>Win &amp; draw detection algorithm</li>
+                      <li>Clean UI with zero dependencies</li>
                     </ul>
+                    <div className="project-learned">
+                      <span className="project-learned-label">What I learned:</span>
+                      React state flow, component composition, and how to think about
+                      game state as a finite state machine.
+                    </div>
                     <div className="tech-stack" aria-label="Technologies used">
                       <span>React</span>
                       <span>Next.js</span>
@@ -757,7 +995,69 @@ export default function Home() {
         </section>
         <hr className="section-divider" aria-hidden="true" />
 
-        {/* ── 05 · Career Path ──────────────────────────────────────────────── */}
+        {/* ── How I Build ────────────────────────────────────────────────────── */}
+        <section id="approach" className="approach-section section" aria-labelledby="approach-heading">
+          <div className="container">
+
+            <div className="section-eyebrow" aria-hidden="true">
+              <span className="eyebrow-line" />
+              <span className="eyebrow-text">Engineering Approach</span>
+            </div>
+
+            <div className="approach-header">
+              <h2 id="approach-heading" className="approach-heading">
+                How I<br />
+                <span className="approach-heading-accent">build software.</span>
+              </h2>
+              <p className="approach-subtext">
+                A mental model I try to follow on every project —
+                from a simple script to a full-stack app.
+              </p>
+            </div>
+
+            <div className="approach-steps">
+              {[
+                {
+                  num: "01",
+                  title: "Understand",
+                  desc: "Break the problem into its actual requirements. What needs to work? What are the edge cases? What are the constraints?",
+                },
+                {
+                  num: "02",
+                  title: "Design",
+                  desc: "Think about the data model first. Then the API surface. Then the UI. Architecture decisions made early save hours of refactoring.",
+                },
+                {
+                  num: "03",
+                  title: "Build",
+                  desc: "Write the smallest version that works correctly. No premature optimization. No over-engineering. Make it work before making it clever.",
+                },
+                {
+                  num: "04",
+                  title: "Test",
+                  desc: "Find bugs manually first — actually use what you built. Look for security holes, edge cases, and anything that breaks assumptions.",
+                },
+                {
+                  num: "05",
+                  title: "Improve",
+                  desc: "Refactor for clarity, not just performance. Delete code that isn't needed. Write the kind of code you'd want to read six months later.",
+                },
+              ].map(({ num, title, desc }) => (
+                <div key={num} className="approach-step">
+                  <div className="approach-step-num" aria-hidden="true">{num}</div>
+                  <div className="approach-step-body">
+                    <h3 className="approach-step-title">{title}</h3>
+                    <p className="approach-step-desc">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+        <hr className="section-divider" aria-hidden="true" />
+
+        {/* ── 05 · Career ────────────────────────────────────────────────────── */}
         <section id="career" className="career section" aria-labelledby="career-heading">
           <div className="container">
 
@@ -768,50 +1068,66 @@ export default function Home() {
 
             <div className="career-header">
               <h2 id="career-heading" className="career-heading">
-                Career<br />
+                Current<br />
                 <span className="career-heading-gradient">direction.</span>
               </h2>
               <p className="career-subtext">
-                A focused path toward backend engineering and application security —
-                grounded in real project work and ongoing learning.
+                An honest picture of where I am and where I&apos;m going —
+                grounded in what I&apos;m actually working on.
               </p>
             </div>
 
             <div className="career-content">
 
               <div className="career-card">
-                <div className="career-card-icon" aria-hidden="true">📍</div>
+                <div className="career-card-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    <path d="M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+                  </svg>
+                </div>
                 <div className="career-card-num" aria-hidden="true">01</div>
-                <h3 className="career-card-title">Currently</h3>
+                <h3 className="career-card-title">Right Now</h3>
                 <ul className="career-card-list">
-                  <li>B.Tech Computer Science (2023–Present)</li>
-                  <li>Solving DSA problems on LeetCode</li>
-                  <li>Building full-stack web applications</li>
-                  <li>Developing Android apps with Jetpack Compose</li>
+                  <li>B.Tech Computer Science, 2023 — Present</li>
+                  <li>Building HazardWatch backend</li>
+                  <li>Solving DSA on LeetCode daily</li>
+                  <li>Developing Tasky for Android</li>
+                  <li>Studying CS fundamentals in depth</li>
                 </ul>
               </div>
 
               <div className="career-card">
-                <div className="career-card-icon" aria-hidden="true">🔨</div>
+                <div className="career-card-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                  </svg>
+                </div>
                 <div className="career-card-num" aria-hidden="true">02</div>
-                <h3 className="career-card-title">Building</h3>
+                <h3 className="career-card-title">Learning</h3>
                 <ul className="career-card-list">
-                  <li>Secure REST APIs with JWT auth</li>
-                  <li>Backend systems with MongoDB</li>
-                  <li>Responsive full-stack web apps</li>
-                  <li>Mobile-first Android applications</li>
+                  <li>System design &amp; scalable architecture</li>
+                  <li>Advanced data structures &amp; algorithms</li>
+                  <li>Application security &amp; secure API design</li>
+                  <li>Cloud deployment fundamentals</li>
                 </ul>
               </div>
 
               <div className="career-card">
-                <div className="career-card-icon" aria-hidden="true">🎯</div>
+                <div className="career-card-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
                 <div className="career-card-num" aria-hidden="true">03</div>
-                <h3 className="career-card-title">Next</h3>
+                <h3 className="career-card-title">Looking For</h3>
                 <ul className="career-card-list">
                   <li>Software engineering internship</li>
                   <li>Backend or full-stack engineering role</li>
-                  <li>System design &amp; cloud fundamentals</li>
-                  <li>Application security depth</li>
+                  <li>Open-source collaboration</li>
+                  <li>Interesting engineering projects</li>
                 </ul>
               </div>
 
@@ -843,13 +1159,55 @@ export default function Home() {
             <div className="cert-grid">
 
               {[
-                { src: "/kunal infosys i2aiml.jpg",          alt: "Introduction to AIML Certificate — Infosys",          title: "Intro to AIML",          issuer: "Infosys" },
-                { src: "/kunal udemy java spring boot cert.jpg", alt: "Java & Spring Boot Certificate — Udemy",          title: "Java & Spring Boot",     issuer: "Udemy" },
-                { src: "/kunal udemy python basics cert.jpg", alt: "Python Basics Certificate — Udemy",                  title: "Python Basics",          issuer: "Udemy" },
-                { src: "/kunal udemy google cloud cert.jpg",  alt: "Google Cloud Certificate — Udemy",                   title: "Google Cloud",           issuer: "Udemy" },
-                { src: "/kunal udemy ai agents cert.jpg",     alt: "AI Agents Certificate — Udemy",                      title: "AI Agents",              issuer: "Udemy" },
-                { src: "/kunal udemy win cmd mastery cert.jpg", alt: "Windows Command Line Mastery Certificate — Udemy", title: "Windows CLI Mastery",    issuer: "Udemy" },
-              ].map(({ src, alt, title, issuer }) => (
+                {
+                  src: "/kunal infosys i2aiml.jpg",
+                  alt: "Introduction to AIML Certificate — Infosys",
+                  title: "Intro to AIML",
+                  issuer: "Infosys",
+                  topic: "Machine Learning",
+                  year: "2024",
+                },
+                {
+                  src: "/kunal udemy java spring boot cert.jpg",
+                  alt: "Java & Spring Boot Certificate — Udemy",
+                  title: "Java & Spring Boot",
+                  issuer: "Udemy",
+                  topic: "Backend Development",
+                  year: "2024",
+                },
+                {
+                  src: "/kunal udemy python basics cert.jpg",
+                  alt: "Python Basics Certificate — Udemy",
+                  title: "Python Basics",
+                  issuer: "Udemy",
+                  topic: "Programming",
+                  year: "2023",
+                },
+                {
+                  src: "/kunal udemy google cloud cert.jpg",
+                  alt: "Google Cloud Certificate — Udemy",
+                  title: "Google Cloud",
+                  issuer: "Udemy",
+                  topic: "Cloud Computing",
+                  year: "2024",
+                },
+                {
+                  src: "/kunal udemy ai agents cert.jpg",
+                  alt: "AI Agents Certificate — Udemy",
+                  title: "AI Agents",
+                  issuer: "Udemy",
+                  topic: "Artificial Intelligence",
+                  year: "2025",
+                },
+                {
+                  src: "/kunal udemy win cmd mastery cert.jpg",
+                  alt: "Windows Command Line Mastery Certificate — Udemy",
+                  title: "Windows CLI Mastery",
+                  issuer: "Udemy",
+                  topic: "Developer Tools",
+                  year: "2023",
+                },
+              ].map(({ src, alt, title, issuer, topic, year }) => (
                 <a
                   key={title}
                   href={src}
@@ -867,7 +1225,11 @@ export default function Home() {
                     </div>
                     <div className="cert-info">
                       <h3>{title}</h3>
-                      <p>{issuer}</p>
+                      <div className="cert-meta-row">
+                        <p className="cert-issuer">{issuer}</p>
+                        <span className="cert-topic">{topic}</span>
+                      </div>
+                      <span className="cert-year">{year}</span>
                     </div>
                   </div>
                 </a>
@@ -878,7 +1240,7 @@ export default function Home() {
         </section>
         <hr className="section-divider" aria-hidden="true" />
 
-        {/* ── 07 · Contact ───────────────────────────────────────────────────── */}
+        {/* ── 07 · Contact ────────────────────────────────────────────────────── */}
         <section id="contact" className="contact section" aria-labelledby="contact-heading">
           <div className="container">
 
@@ -890,21 +1252,38 @@ export default function Home() {
             <div className="contact-editorial">
               <div className="contact-left">
                 <h2 id="contact-heading" className="contact-heading">
-                  Let&apos;s build<br />
-                  <span className="contact-heading-gradient">something.</span>
+                  Have a project<br />
+                  <span className="contact-heading-gradient">or opportunity?</span>
                 </h2>
                 <p className="contact-subtext">
-                  Looking for an internship, collaboration, or an interesting software project?
-                  I&apos;m open to opportunities in backend engineering, full-stack development,
-                  and application security.
+                  I&apos;m currently open to internships, backend/full-stack engineering roles,
+                  and interesting open-source collaborations. If you have something in mind,
+                  I&apos;d love to hear from you.
                 </p>
-                <a
-                  href="mailto:kunalgupta9340@gmail.com"
-                  className="contact-email-btn"
-                  aria-label="Send email to Kunal Gupta"
-                >
-                  Email Me <ArrowIcon size={14} />
-                </a>
+
+                <div className="contact-cta-group">
+                  <a
+                    href="mailto:kunalgupta9340@gmail.com"
+                    className="contact-email-btn"
+                    aria-label="Send email to Kunal Gupta"
+                    id="contact-email-link"
+                  >
+                    Email Me <ArrowIcon size={14} />
+                  </a>
+                  <button
+                    className={`contact-copy-btn ${copiedEmail ? "copied" : ""}`}
+                    onClick={copyEmail}
+                    aria-label={copiedEmail ? "Email address copied" : "Copy email address to clipboard"}
+                    id="contact-copy-email"
+                    type="button"
+                  >
+                    {copiedEmail ? (
+                      <><CheckIcon /> Copied!</>
+                    ) : (
+                      <><CopyIcon /> Copy Email</>
+                    )}
+                  </button>
+                </div>
               </div>
 
               <div className="contact-right">
@@ -935,7 +1314,7 @@ export default function Home() {
                     <div className="contact-row-icon"><LinkedInIcon /></div>
                     <div className="contact-row-body">
                       <span className="contact-row-label">LinkedIn</span>
-                      <span className="contact-row-value">kunal82917</span>
+                      <span className="contact-row-value">linkedin.com/in/kunal82917</span>
                     </div>
                     <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
                   </a>
@@ -951,7 +1330,7 @@ export default function Home() {
                     <div className="contact-row-icon"><GitHubIcon /></div>
                     <div className="contact-row-body">
                       <span className="contact-row-label">GitHub</span>
-                      <span className="contact-row-value">kunal82917</span>
+                      <span className="contact-row-value">github.com/kunal82917</span>
                     </div>
                     <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
                   </a>
@@ -979,11 +1358,12 @@ export default function Home() {
                     className="contact-row-link"
                     role="listitem"
                     aria-label="View Resume PDF (opens in new tab)"
+                    id="contact-resume-link"
                   >
                     <div className="contact-row-icon"><ResumeIcon /></div>
                     <div className="contact-row-body">
                       <span className="contact-row-label">Resume</span>
-                      <span className="contact-row-value">Download / View PDF</span>
+                      <span className="contact-row-value">View / Download PDF</span>
                     </div>
                     <svg className="contact-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
                   </a>
@@ -996,15 +1376,15 @@ export default function Home() {
         </section>
       </main>
 
-      {/* ── Footer ─────────────────────────────────────────────────────────────── */}
+      {/* ── Footer ──────────────────────────────────────────────────────────────── */}
       <footer className="site-footer" role="contentinfo">
         <div className="container">
           <div className="footer-inner">
             <div className="footer-left">
               <span className="footer-name">Kunal Gupta</span>
-              <span className="footer-role">Software Engineer · CS Engineering Student</span>
+              <span className="footer-role">Computer Science Student · Developer</span>
             </div>
-            <nav className="footer-links" aria-label="Footer navigation">
+            <nav className="footer-links" aria-label="Footer social links">
               <a
                 href="https://github.com/kunal82917"
                 target="_blank"
@@ -1042,7 +1422,7 @@ export default function Home() {
             </nav>
           </div>
           <p className="footer-copy">
-            © {new Date().getFullYear()} Kunal Gupta. Built with Next.js &amp; deployed on Vercel.
+            © {new Date().getFullYear()} Kunal Gupta · Built with Next.js, deployed on Vercel.
           </p>
         </div>
       </footer>
